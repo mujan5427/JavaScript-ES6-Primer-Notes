@@ -168,6 +168,120 @@ let 和 const 關鍵字
 
 <br />
 
+變數的解構賦值
+
+  * ECMAScript 6 允許按照一定模式，從陣列或物件取值，並賦予至變數中
+
+    ex :
+
+    ```javascript
+    let [foo, [[bar], baz]] = [1, [[2], 3]];
+
+    console.log(foo);     // => 1
+    console.log(bar);     // => 2
+    console.log(baz);     // => 3
+    ```
+  
+  * 解構不成功，變數的值會等於 `undefined`
+
+    ex :
+
+    ```javascript
+    var [foo] = [];
+
+    console.log(foo);     // => undefined
+    ```
+
+  * 如果等號的右邊不是陣列或不具備 Iterator 接口的結構，將會報錯
+
+  * 解構賦值允許指定預設值，一個位置嚴格等於 (`===`) undefined，預設值就會生效
+
+    ex :
+
+    ```javascript
+    var [foo = true] = [];
+    
+    console.log(foo);     // => true
+    
+    var [r, x = 'b'] = ['a'];
+    var [y, z = 'b'] = ['a', undefined];
+    
+    console.log(x);       // => 'b'
+    console.log(z);       // => 'b'
+    ```
+
+  * 預設值可以引用解構賦值的其他變數，但該變數必須已經宣告
+
+    ex :
+
+    ```javascript
+    let [x = 1, y = x] = [];
+
+    console.log(x);     // => 1
+    console.log(y);     // => 1
+    ```
+
+  * 物件的解構賦值不按照位置取值，而是按照物件的特性名稱
+
+    ex :
+
+    ```javascript
+    var { bar, foo } = { foo: "aaa", bar: "bbb" };
+
+    console.log(bar);     // => 'bbb'
+    console.log(foo);     // => 'aaa'
+    ```
+
+    > 如果變數的名稱與特性名稱不一致，需寫成這樣
+
+    ```javascript
+    var { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+
+    console.log(baz);     // => 'aaa'
+    ```
+
+  * 物件的解構賦值也可以使用預設值
+
+    ex :
+
+    ```javascript
+    var {x = 3} = {};
+
+    var {y, z = 5} = {y: 1};
+
+    console.log(x);     // => 3
+    console.log(z);     // => 5
+    ```
+
+  * 字串的解構賦值
+
+    ex :
+
+    ```javascript
+    const [a, b, c, d, e] = 'hello';
+
+    console.log(b);     // => 'e'
+    console.log(e);     // => 'o'
+    ```
+
+  * 函式參數的解構也可以使用預設值
+
+    ex :
+
+    ```javascript
+    function move({x = 0, y = 0} = {}) {
+
+        return console.log([x, y]);
+    }
+
+    move({x: 3, y: 8});     // => [3, 8]
+    move({x: 3});           // => [3, 0]
+    move({});               // => [0, 0]
+    move();                 // => [0, 0]
+    ```
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
