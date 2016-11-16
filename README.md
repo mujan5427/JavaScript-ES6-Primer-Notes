@@ -381,6 +381,85 @@ let 和 const 關鍵字
 
 <br />
 
+數值的擴充
+
+  * `Number.isFinite()`、`Number.isNaN()`，非數值一律回傳 `false`
+
+    - Number.isFinite()：檢查一個數值是否為有限的 (_finite_)
+
+    - Number.isNaN()：檢查一個值是否為 `NaN`
+
+    ex :
+
+    ```javascript
+    // Number.isFinite()
+
+    console.log(Number.isFinite(15));           // => true
+    console.log(Number.isFinite(0.8));          // => true
+    console.log(Number.isFinite(NaN));          // => false
+    console.log(Number.isFinite(Infinity));     // => false
+
+    // Number.isNaN()
+
+    console.log(Number.isNaN(NaN));             // => true
+    console.log(Number.isNaN(15));              // => false
+    console.log(Number.isNaN('15'));            // => false
+    console.log(Number.isNaN(true));            // => false
+    ```
+
+  * `Number.isInteger()`：檢查一個值是否為整數
+
+    ex :
+
+    ```javascript
+    console.log(Number.isInteger(25));       // => true
+    console.log(Number.isInteger(25.0));     // => true
+    console.log(Number.isInteger(25.1));     // => false
+    console.log(Number.isInteger("15"));     // => false
+    console.log(Number.isInteger(true));     // => false
+    ```
+
+  * `Number.isSafeInteger()`：檢查一個數值是否在，JavaScript 能夠準確表示的整數範圍內 `-2^53` 到 `2^53` 之間 (不包含前後兩端點)
+
+    ex :
+
+    ```javascript
+    console.log(Number.isSafeInteger(9007199254740990));     // => true
+    console.log(Number.isSafeInteger('a'));                  // => false
+    console.log(Number.isSafeInteger(null));                 // => false
+    console.log(Number.isSafeInteger(NaN));                  // => false
+    console.log(Number.isSafeInteger(Infinity));             // => false
+    console.log(Number.isSafeInteger(-Infinity));            // => false
+    ```
+
+  * `Math.trunc()`：去除一個數值的小數部分，回傳整數部分
+
+    ex :
+
+    ```javascript
+    console.log(Math.trunc(4.1));         // => 4
+    console.log(Math.trunc(4.9));         // => 4
+    console.log(Math.trunc(-4.1));        // => -4
+    console.log(Math.trunc(-4.9));        // => -4
+    console.log(Math.trunc(-0.1234));     // => -0
+    ```
+
+  * `Math.sign()`：檢查一個數值是否為正數、負數、還是零
+
+    ex :
+
+    ```javascript
+    console.log(Math.sign(-5));        // => -1
+    console.log(Math.sign(5));         // => +1
+    console.log(Math.sign(0));         // => +0
+    console.log(Math.sign(-0));        // => -0
+    console.log(Math.sign(NaN));       // => NaN
+    console.log(Math.sign('foo'));     // => NaN
+    console.log(Math.sign());          // => NaN
+    ```
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
