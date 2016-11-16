@@ -282,6 +282,105 @@ let 和 const 關鍵字
 
 <br />
 
+字串的擴充
+
+  * `includes`、`startsWith`、`endsWith` 函式
+
+    - includes()：回傳布林值，表示是否找到參數中指定的字串
+
+    - startsWith()：回傳布林值，表示參數中指定的字串，是否存在源字串的起始處
+
+    - endsWith()：回傳布林值，表示參數中指定的字串，是否存在源字串的結尾處
+
+    ex :
+
+    ```javascript
+    var str = 'Hello world!';
+
+    console.log(str.startsWith('Hello'));     // => true
+    console.log(str.endsWith('!'));           // => true
+    console.log(str.includes('o'));           // => true
+    ```
+
+  * `repeat` 函式
+
+    ex :
+
+    ```javascript
+    console.log('x'.repeat(3));         // => 'xxx'
+    console.log('hello'.repeat(2));     // => 'hellohello'
+    console.log('na'.repeat(0));        // => ''
+    ```
+
+    > 參數如果是浮點數，會被自動取整
+
+    ```javascript
+    console.log('na'.repeat(2.9));     // => 'nana'
+    ```
+
+    > 參數如果是 `Infinity` 或 負數，將會報錯
+
+    ```javascript
+    console.log('na'.repeat(Infinity));     // => RangeError: Invalid count value
+    console.log('na'.repeat(-1));           // => RangeError: Invalid count value
+    ```
+
+  * **模板字串字面值 (_template string_)**：用反引號 `` ` `` 標示，可以用來定義普通字串，也可以定義多行字串，或者在字串中嵌入變數
+
+    ex :
+
+    ```javascript
+    var str1 = `In JavaScript is a line-feed.`;
+
+    var str2 = `In JavaScript this is
+     not legal.`;
+    
+    var name = 'Bob', time = 'today';
+    
+    var str3 = `Hello ${name}, how are you ${time}?`;
+    
+    console.log(str1);     // => 'In JavaScript is a line-feed.'
+    console.log(str2);     // => 'In JavaScript this is
+                           //     not legal.'
+    console.log(str3);     // => 'Hello Bob, how are you today?'
+    ```
+
+  * 模板字串字面值支援跳脫字元
+
+    ex :
+
+    ```javascript
+    var str1 = `\`Yo\` World!`;
+
+    console.log(str1);     // => '`Yo` World!'
+    ```
+
+  * 嵌入變數需將變數寫入 `${}` 中，可以放入運算式、引用物件特性 或 調用函式
+
+    ex :
+
+    ```javascript
+    var x = 1;
+    var y = 2;
+    var obj = {x: 1, y: 2};
+    
+    function fn() {
+      
+      return 'Hello World';
+    }
+    
+    var exp1 = `${x} + ${y * 2} = ${x + y * 2}`;
+    var exp2 = `${obj.x + obj.y}`;
+    var exp3 = `foo ${fn()} bar`;
+    
+    
+    console.log(exp1);     // => '1 + 4 = 5'
+    console.log(exp2);     // => '3'
+    console.log(exp3);     // => 'foo Hello World bar'
+    ```
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
