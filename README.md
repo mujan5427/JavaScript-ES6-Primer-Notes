@@ -562,6 +562,114 @@ let 和 const 關鍵字
     ```javascript
     console.log(Array.from(['a',,'b']));     // => ['a', undefined, 'b']
     ```
+
+<br />
+
+函式的擴充
+
+  * 允許為函式的參數設定預設值
+
+    ex :
+
+    ```javascript
+    function sayHi(x, y = 'World') {
+      
+      console.log(x + ' ' + y);
+    }
+    
+    sayHi('Hello');              // => 'Hello World'
+    sayHi('Hello', 'China');     // => 'Hello China'
+    sayHi('Hello', '');          // => 'Hello '
+    ```
+
+  * 函式參數預設值如果是一個變數，則它的的範疇一樣是函式範疇
+
+    ex :
+
+    ```javascript
+    var x = 1;
+    
+    function f(x, y = x) {
+      
+      console.log(y);
+    }
+    
+    f(2);     // => 2
+    ``
+
+  * rest 參數：透過 `...` 來取得函式多餘的引數，rest 參數搭配的變數將回傳一組陣列，且之後不可以再有參數
+
+    ex :
+
+    ```javascript
+    function add(str, ...values) {
+    
+      console.log(values);
+    }
+    
+    add('Hi', 2, 5, 3);     // => [2, 5, 3]
+    ```
+
+  * **擴展運算子 (_spread operator_)**：透過 `...` 將一組陣列轉成用逗號分隔的參數序列
+
+    ex :
+
+    ```javascript
+    function add(x, y) {
+      
+      return x + y;
+    }
+    
+    var numbers = [4, 38];
+    
+    console.log(add(...numbers));     // => 42
+    ```
+
+  * 函式參數有設定預設值，則該函式不得使用 `嚴格模式`，否則會報錯
+
+    ex :
+
+    ```javascript
+    function doSomething(a, b = a) {
+      'use strict';     // => SyntaxError
+      
+    }
+    ```
+
+  * 函式的 `name` 特性，會回傳該函式的名稱
+
+    ex :
+
+    ```javascript
+    function foo() {}
+    var func1 = function () {};
+    
+    console.log(foo.name);       // => 'foo'
+    console.log(func1.name);     // => 'func1'
+    ```
+
+  * 允許使用 `=>` 定義函式，但有下列限制
+
+    - 函式內的 `this` 不可指定，是固定的
+
+    - 不可當作建構式，用 `new` 則會報錯
+
+    - 不可使用 `arguments`、`super`、`new.target`
+
+    - 不可使用 `yield`，也就是不能成為 Generator 函式
+
+    ex :
+
+    ```javascript
+    var func = (value) => value;
+
+    // 上面的寫法實際上等於下面這種
+
+    var func = function(value) {
+
+      return value;
+    };
+    ```
     
 <br />
 
