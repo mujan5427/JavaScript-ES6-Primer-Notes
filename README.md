@@ -670,7 +670,90 @@ let 和 const 關鍵字
       return value;
     };
     ```
+
+<br />
+
+物件的擴充
+
+  * 使用物件字面值定義特性時，允許直接寫入變數及函式
+
+    ex :
+
+    ```javascript
+    var birth = '1866/11/12';
     
+    var person = {
+    
+      university: '德明',
+      birth,
+      hello() { return this.university; }
+    };
+    
+    console.log(person.birth);       // => '1866/11/12'
+    console.log(person.hello());     // => '德明'
+    ```
+
+  * 使用物件字面值定義特性時，特性名稱可以使用運算式
+
+    ex :
+
+    ```javascript
+    let propKey = 'foo';
+    
+    let obj = {
+      
+      [propKey]: true,
+      ['a' + 'bc']: 123
+    };
+    
+    console.log(obj['foo']);     // => true
+    console.log(obj['abc']);     // => 123
+    ```
+
+  * Object.assign()：用於合併物件的可列舉特性
+
+    ex :
+
+    ```javascript
+    var target  = { a: 1, b: 1 };
+    var source1 = { b: 2, c: 2 };
+    var source2 = { c: 3 };
+    
+    Object.assign(target, source1, source2);
+    
+    console.log(target);     // => { a:1, b:2, c:3 }
+    ```
+
+  * ES6 一共有 5 種方式可以遍歷物件的特性
+
+    - for...in：遍歷物件自有的、繼承的可列舉特性 (不含 Symbol 特性)
+
+    - Object.keys(object)：回傳一個陣列，包含物件自有的可列舉特性 (不含 Symbol 特性)
+
+    - Object.getOwnPropertyNames(object)：回傳一個陣列，包含物件自有的所有特性 (不含 Symbol 特性)
+
+    - Object.getOwnPropertySymbols(object)：回傳一個陣列，包含物件自有的 Symbol 特性
+
+    - Reflect.ownKeys(object)：回傳一個陣列，包含物件自有的特性 (含 Symbol 特性、不可列舉特性)
+
+  * 物件的 `__proto__` 特性：用來讀取或設定該物件的 prototype 屬性，僅瀏覽器可實作，定義為內部屬性理論上不應對外揭露
+
+  * Object.setPrototypeOf(object, prototype)：設定指定物件的 prototype 屬性
+
+  * Object.getPrototypeOf(object)：取得指定物件的 prototype 屬性
+
+    ex :
+
+    ```javascript
+    var prototypeObject = { a:1, b:2 };
+    var target = {};
+    
+    Object.setPrototypeOf(target, prototypeObject);
+    
+    console.log(target.__proto__);                  // => { a:1, b:2 }
+    console.log(Object.getPrototypeOf(target));     // => { a:1, b:2 }
+    ```
+
 <br />
 
 ## Reference Information
