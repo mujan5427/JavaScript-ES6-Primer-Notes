@@ -460,6 +460,111 @@ let 和 const 關鍵字
 
 <br />
 
+陣列的擴充
+
+  * Array.from()：可以將物件轉換成陣列，主要為下列兩種
+
+    - 類似陣列的物件 (_array-like object_)
+
+    - 可遍歷的物件 (_iterable object_)
+
+    ex :
+
+    ```javascript
+    let arrayLikeObject = {
+        '0': 'a',
+        '1': 'b',
+        '2': 'c',
+        length: 3
+    };
+    
+    let newArray = Array.from(arrayLikeObject);
+    
+    console.log(newArray);     // => ['a', 'b', 'c']
+    ```
+
+  * find()、findIndex()：找出陣列中第一個符合條件的元素
+
+    - find()：回傳該元素的值，都不符合則回傳 `undefined`
+
+    - findIndex()：回傳該元素的 index，都不符合則回傳 `-1`
+
+    ex :
+
+    ```javascript
+    // find()
+
+    var ans = [1, 4, -5, 10].find(
+    
+      function (value) {
+        
+        return value < 0;
+      }
+    );
+    
+    console.log(ans);     // => -5
+
+    // findIndex()
+
+    var ans = [1, 5, 10, 15].find(
+      
+      function(value, index, arr) {
+        
+      return value > 9;
+    });
+    
+    console.log(ans);     // => 10
+    ```
+
+  * fill()：將值填滿於陣列中
+
+    ex :
+
+    ```javascript
+    var arr1 = ['a', 'b', 'c'].fill(7);
+    var arr2 = new Array(3).fill(7);
+    
+    console.log(arr1);     // => [7, 7, 7]
+    console.log(arr2);     // => [7, 7, 7]
+    ```
+
+  * keys()、values()、entries()：用於遍歷陣列
+
+    - keys()：回傳 index
+
+    - values()：回傳 value
+
+    - entries()：回傳 key 和 value
+
+    ex :
+
+    ```javascript
+    for (let index of ['a', 'b'].keys()) {
+      
+      console.log(index);            // => 0
+    }                                //    1
+    
+    for (let value of ['a', 'b'].values()) {
+      
+      console.log(value);            // => 'a'     * 只有 Safari 10 有實作
+    }                                //    'b'
+    
+    for (let [index, value] of ['a', 'b'].entries()) {
+      
+      console.log(index, value);     // => 0 'a'
+    }                                //    1 'b'
+    ```
+
+  * ES6 才新增的函式，會將陣列中的空元素轉成 `undefined`
+
+    ex :
+
+    ```javascript
+    console.log(Array.from(['a',,'b']));     // => ['a', undefined, 'b']
+    ```
+    
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
