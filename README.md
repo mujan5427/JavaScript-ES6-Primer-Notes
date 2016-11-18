@@ -964,6 +964,71 @@ Set、Map 數據結構
 
 <br />
 
+Iterator、for...of 迴圈
+
+  * 原有的數據結構有陣列 (_Array_)、物件 (_Object_)，ECMAScript 6 新增了 Set 和 Map
+
+  * Iterator 接口：一種為了遍歷各數據結構而制定的統一接口
+
+  * 預設的 Iterator 接口部署在 Symbol.iterator 特性，該特性指向一個遍歷器函式
+
+  * 有 4 種數據結構原生具備 Iterator 接口，陣列、某些類似陣列的物件、Set 和 Map 結構
+
+    ex :
+
+    ```javascript
+    let arr = ['a', 'b', 'c'];
+    let iter = arr[Symbol.iterator]();
+    
+    console.log(iter.next());     // => { done: false , value: 'a' }
+    console.log(iter.next());     // => { done: false , value: 'b' }
+    console.log(iter.next());     // => { done: false , value: 'c' }
+    console.log(iter.next());     // => { done: true , value: undefined }
+    ```
+
+  * 一個數據結構只要部署了 Symbol.iterator 特性，就可以用 for...of 遍歷它的元素，for...of 實際上是呼叫它的遍歷器函式
+
+    ex :
+
+    ```javascript
+    const arr = ['red', 'green', 'blue'];
+    let iterator  = arr[Symbol.iterator]();
+    
+    for(let value of arr) {
+      
+      console.log(value);     // => 'red' 'green' 'blue'
+    }
+    
+    for(let value of iterator) {
+      
+      console.log(value);     // => 'red' 'green' 'blue'
+    }
+    ```
+
+  * for...of 可直接取到元素的值，而 for...in 只能取到元素的 index
+
+  * for...of 不能直接遍歷**物件**，需要部署 Iterator 接口才行，for...in 可以直接遍歷物件的特性名稱
+
+    > for...in 主要是為了遍歷物件而設計的，不適合用在陣列
+
+    ex :
+
+    ```javascript
+    var es6 = {
+      
+      edition: 6,
+      committee: 'TC39',
+      standard: 'ECMA-262'
+    };
+    
+    for (propertyName in es6) {
+      
+      console.log(propertyName);     // => 'edition' 'committee' 'standard'
+    }
+    ```
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
