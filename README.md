@@ -858,6 +858,112 @@ Proxy、Reflect
 
 <br />
 
+Set、Map 數據結構
+
+  * ECMAScript 6 提供了新的數據結構 Set，它類似陣列但是各個元素的值都是唯一的，Set 本身是個建構式
+
+  ex :
+
+  ```javascript
+  var set1 = new Set();
+  
+  [2, 3, 5, 4, 5, 2, 2].map(x => set1.add(x));
+  
+  for (let i of set1) {
+    
+    console.log(i);     // => 2 3 5 4
+  }
+  ```
+
+  * Set 結構的實例擁有下列特性、方法
+
+    - Set.prototype.size：回傳該 Set 實例的元素總數
+
+    > 操作方法
+
+    - add(value)：新增值
+
+    - delete(value)：刪除某個值，並回傳一個布林值，表示成功與否
+ 
+    - has(value)：回傳一個布林值，表示該值是否存在
+
+    - clear()：清除所有值
+
+    > 遍歷方法
+
+    - keys()：回傳鍵名
+
+    - values()：回傳值
+
+    - entries()：回傳鍵、值
+
+    - forEach()：使用回呼函式遍歷每個元素
+
+    ex :
+
+    ```javascript
+    var set1 = new Set();
+    
+    set1.add(1).add(2).add(2);
+    
+    console.log(set1.size);          // => 2
+    
+    console.log(set1.has(1));        // => true
+    console.log(set1.has(2));        // => true
+    console.log(set1.has(3));        // => false
+    console.log(set1.delete(2));     // => true
+    console.log(set1.has(2));        // => false
+    
+    set1.clear();
+    
+    console.log(set1.size)           // => 0
+    ```
+
+    > 由於 Set 結構沒有鍵名，因此 keys() 和 values() 行為一樣
+
+    ```javascript
+    var set = new Set(['red', 'green', 'blue']);
+    
+    for (let item of set.keys()) {
+      
+      console.log(item);     // => 'red' 'green' 'blue'
+    }
+    
+    for (let item of set.values()) {
+      
+      console.log(item);     // => 'red' 'green' 'blue'
+    }
+    
+    for (let item of set.entries()) {
+      
+      console.log(item);     // => ['red', 'red'] ['green', 'green'] ['blue', 'blue']
+    }
+    ```
+
+  * WeakSet 結構與 Set 類似，差別在於它的值只能是物件，且內含的物件都是弱引用
+
+  * Map 結構：類似物件也是「鍵-值」的集合，但是鍵的範圍不限是字串，可以是各種型別的值 (包含物件)
+
+    ex :
+
+    ```javascript
+    var map1 = new Map();
+    var object1 = { p: 'Hello World' };
+    
+    map1.set(object1, 'content');
+    
+    console.log(map1.get(object1));     // => 'content'
+    console.log(map1.has(object1));     // => true
+    
+    map1.delete(object1);
+    
+    console.log(map1.has(object1));     // => false
+    ```
+
+  * WeakMap 結構與 Map 類似，差別在於它的鍵只能是物件，鍵所指向的物件，不計入垃圾回收機制
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
