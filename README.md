@@ -756,6 +756,43 @@ let 和 const 關鍵字
 
 <br />
 
+Symbol
+
+  * 新增一種新的資料型別 Symbol，用來表示獨一無二的值，不得與其他資料型別進行運算
+
+    ex :
+
+    ```javascript
+    var symbol1 = Symbol('justin');
+    var symbol2 = Symbol('justin');
+    var symbol3 = Symbol('abc');
+    
+    console.log(symbol1.toString());      // => 'Symbol(justin)'
+    console.log(symbol2.toString());      // => 'Symbol(justin)'
+    console.log(symbol3.toString());      // => 'Symbol(abc)'
+    
+    console.log(symbol1 === symbol2);     // => false
+    ```
+
+  * 因為它獨一無二的特質，可以用來定義物件的特性名稱，防止特性被 override
+
+    > Symbol 值作為物件特性名稱時，不能使用 `.` 運算子
+
+    ex :
+
+    ```javascript
+    var varSymbol = Symbol();
+    
+    var obj = {
+      
+      [varSymbol]: 'Hello!'
+    };
+    
+    console.log(obj[varSymbol]);     // => 'Hello!'
+    ```
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
