@@ -793,6 +793,71 @@ Symbol
 
 <br />
 
+Proxy、Reflect
+
+  * Proxy：攔截某些物件的操作行為，進而修改它的預設行為
+
+    ex :
+
+    ```javascript
+    var person = {
+      
+      name: '張三'
+    };
+    
+    var handler = {
+      
+      get: function(target, property) {
+        
+        if (property in target) {
+          
+          return target[property];
+          
+        } else {
+          
+          throw new ReferenceError(`Property '${property}' does not exist.`);
+        }
+      }
+    };
+    
+    var proxy = new Proxy(person, handler);
+    
+    console.log(proxy.name);     // => '張三'
+    console.log(proxy.age);      // => ReferenceError: Property 'age' does not exist.
+    ```
+
+  * Proxy 支持的攔截操作行為
+
+    - get(target, propKey, receiver)：攔截物件特性的讀取
+
+    - set(target, propKey, value, receiver)：攔截物件特性的設定
+
+    - has(target, propKey)：攔截 `in` 運算子 及 hasOwnProperty()
+
+    - deleteProperty(target, propKey)：攔截 `delete` 特性的操作
+
+    - ownKeys(target)：攔截 Object.keys()
+
+    - getOwnPropertyDescriptor(target, propKey)：攔截 Object.getOwnPropertyDescriptor()
+
+    - defineProperty(target, propKey, propDesc)：攔截 Object.defineProperty()
+
+    - preventExtensions(target)：攔截 Object.preventExtensions()
+
+    - getPrototypeOf(target)：攔截 Object.getPrototypeOf()、Object.prototype.__proto__、Object.prototype.isPrototypeOf()、Object.getPrototypeOf()、Reflect.getPrototypeOf()、`instanceof`
+
+    - isExtensible(target)：攔截 Object.isExtensible()
+
+    - setPrototypeOf(target, proto)：攔截 Object.setPrototypeOf()
+
+    - apply(target, object, args)：攔截函式調用、call() 和 apply()
+
+    - construct(target, args)：攔截 `new` 實例的操作
+
+  * Reflect：為了操作物件而提供的新API，將 Object 物件的一些明顯屬於語言內部的函式，放到 Reflect 物件中，某些方法同時存在 Object、Reflect 物件中，未來新方法將僅部署至 Reflect 物件中
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
