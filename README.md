@@ -844,7 +844,7 @@ Proxy、Reflect
 
     - preventExtensions(target)：攔截 Object.preventExtensions()
 
-    - getPrototypeOf(target)：攔截 Object.getPrototypeOf()、Object.prototype.__proto__、Object.prototype.isPrototypeOf()、Object.getPrototypeOf()、Reflect.getPrototypeOf()、`instanceof`
+    - getPrototypeOf(target)：攔截 Object.getPrototypeOf()、Object.prototype.\_\_proto\_\_、Object.prototype.isPrototypeOf()、Object.getPrototypeOf()、Reflect.getPrototypeOf()、`instanceof`
 
     - isExtensible(target)：攔截 Object.isExtensible()
 
