@@ -1092,6 +1092,115 @@ console.log(hw.next());     // => { done: true, value: undefined }
 
 <br />
 
+Promise
+
+  * Promise 也是一個非同步程式設計的解決方案，他本身是一個建構式，用來產生 Promise 物件
+
+    ex :
+
+    ```javascript
+    function loadImageAsync(url) {
+      
+      return new Promise(function(resolve, reject) {
+        
+        var image = new Image();
+    
+        image.onload = function() {
+          
+          var str1 = 'Google Logo';
+          
+          resolve(str1);
+        };
+    
+        image.onerror = function() {
+          
+          reject(new Error('Could not load image at ' + url).toString());
+        };
+    
+        image.src = url;
+      });
+    }
+
+    
+    var logoUrl = 'https://www.google.com.tw/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
+    
+    loadImageAsync(logoUrl).then(
+      
+      function(arg1) {
+        
+        console.log(`${arg1} 圖片： 載入成功！`); 
+
+        // 我是 resolve() 的 Callback 區塊
+        
+    }, function(arg1) {
+      
+        console.log(arg1);     // => Error: Could not load image at...
+      
+        // 我是 reject() 的 Callback 區塊
+    });
+    ```
+
+  * Promise.prototype.then()：為 Promise 實例添加狀態改變時的 Callback 函式，可採用鏈式寫法
+
+    - 第一個參數：Resolved 狀態的 Callback
+
+    - 第二個參數：Rejected 狀態的 Callback (可選的)
+
+  * Promise.prototype.catch()：為 .then(null, rejection) 的別名，用於錯誤發生時的 Callback
+
+    ex :
+
+    ```javascript
+    function loadImageAsync(url) {
+      
+      return new Promise(function(resolve, reject) {
+        
+        var image = new Image();
+    
+        image.onload = function() {
+          
+          var str1 = 'Google Logo';
+          
+          resolve(str1);
+        };
+    
+        image.onerror = function() {
+          
+          reject(new Error('Could not load image at ' + url).toString());
+        };
+    
+        image.src = url;
+      });
+    }
+    
+    var logoUrl = 'ttps://www.google.com.tw/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
+    
+    loadImageAsync(logoUrl).then(
+      
+      function(arg1) {
+        
+        console.log(`${arg1} 圖片： 載入成功！`); 
+        
+    }).catch(function(error) {
+      
+      console.log(error);     // => Error: Could not load image at...
+    });
+    ```
+
+  * Promise.prototype.then() 的 Callback 中，拋出的錯誤，也會被 Promise.prototype.catch() 捕捉
+
+  * Promise.all()：將多個 Promise 實例包裝成一個新的 Promise 實例，用來判斷參數中的 Promise 是否都成功
+
+    - Resolved 狀態判定：參數中所有的 Promise 狀態都是 fulfilled 時，新實例的狀態才會是 fulfilled，而新實例的 Resolved Callback 才會被呼叫
+
+    - Rejected 狀態判定：參數中有一個 Promise 狀態是 rejected 時，新實例的狀態就會是 rejected，而第一個 rejected 的實例的回傳值會傳給 Rejected Callback
+
+  * Promise.race()：也是包裝成一個新 Promise 實例，並判斷多個 Promise 實例，何者的狀態先改變，將最先改變狀態的實例的值傳給 Callback
+
+  * Promise.resolve()：將一個物件轉換成 Promise 物件
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
