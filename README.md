@@ -1029,6 +1029,69 @@ Iterator、for...of 迴圈
 
 <br />
 
+Generator 函式
+
+  * Generator 函式是 ECMAScript 6 提供的一種非同步程式設計的解決方案
+
+  * 形式上是一個普通函式，呼叫它會回傳一個遍歷器物件 (_Iterator Object_)，且有兩種特徵
+
+    - `function` 與函式名稱之間存在一個 `*`
+
+    - 函式內部存在 `yield`
+
+    ex :
+
+    ```javascript
+    function* helloWorldGenerator() {
+      
+      yield 'hello';
+      
+      yield 'world';
+      
+      return 'ending';
+    }
+    
+    var hw = helloWorldGenerator();
+    ```
+
+  * Generator 函式的呼叫方式和一般函式一樣，但是呼叫後不會馬上執行，回傳的也不是函式執行結果，而是一個內部狀態的指針物件，也就是遍歷器物件 (_Iterator Ojbect_)，必須用 next() 才能將指針指向下一個狀態，而內部指針會在函式遇到 `yield` 或 `return` 時停下來
+
+    ex :
+
+    > 呈如上一個範例，透過 next() 調整指針
+
+    ```javascript
+console.log(hw.next());     // => { done: false, value: 'hello' }
+console.log(hw.next());     // => { done: false, value: 'world' }
+console.log(hw.next());     // => { done: true, value: 'ending' }
+console.log(hw.next());     // => { done: true, value: undefined }
+    ```
+
+  * `yield` 和 `return` 的差別在於，指針改變後 `yield` 會調整自己的位置指向到下一個狀態，但是 `return` 不會，一個函式只能擁有一個 `return`
+
+  * for...of 可以自動遍歷 Generator 函式產生的 Iterator 物件
+
+    ex :
+
+    ```javascript
+    function *oneToFive() {
+      
+      yield 1;
+      yield 2;
+      yield 3;
+      yield 4;
+      yield 5;
+      return 6;
+    }
+    
+    for (let value of oneToSix()) {
+      
+      console.log(value);     // => 1 2 3 4 5
+    }
+    ```
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
