@@ -1201,6 +1201,238 @@ Promise
 
 <br />
 
+Class
+
+  * ECMAScript 6 實作了 `class`，讓 JavaScript 的物件導向寫法和其他語言差異沒這麼大 (看起來)
+
+    > class 大部分的功能，ECMAScript 5 都做得到，下列兩者相同
+
+    ex :
+
+    ```javascript
+    // ECMAScript 5 寫法
+
+    function Point(x, y) {
+      
+      this.x = x;
+      this.y = y;
+    }
+    
+    Point.prototype.toString = function () {
+      
+      return '(' + this.x + ', ' + this.y + ')';
+    };
+    
+    var pointInstance = new Point(1, 2);
+
+    // ECMAScript 6 寫法
+
+    class Point {
+      
+      constructor(x, y) {
+        
+        this.x = x;
+        this.y = y;
+      }
+    
+      toString() {
+        return '(' + this.x + ', ' + this.y + ')';
+      }
+    }
+    ```
+
+  * 定義 class 的方法時，不需要在函式前面加上 `function`
+
+  * 實例化 class，也是直接使用 `new` 就可以，就像使用建構式一樣
+
+  * class 上的方法，事實上都定義在 class 的 prototype 特性上
+
+    ex :
+
+    ```javascript
+    class Point {
+      
+      constructor() {
+    
+      }
+    
+      toString() {
+        
+      }
+    
+      toValue() {
+        
+      }
+    }
+    
+    Point.prototype = {
+      
+      toString() {
+        
+      },
+      toValue() {
+        
+      }
+    };
+    
+    console.log(Point.prototype.toString() === new Point().toString());     // => true
+    ```
+
+  * prototype 的 constuctor 特性直接指向 class 本身
+
+    > 呈如上一個範例
+
+    ex :
+
+    ```javascript
+    console.log(Point.prototype.constructor === Point);     // => true
+    ```
+
+  * class 的內部定義的方法，全都是不可列舉的 (_non-enumerable_)
+
+  * constructor() 是 class 的預設方法，當 class 被使用 `new` 實例化時，會自動呼叫它
+
+  * 一個 class 一定要有 constructor()，如果沒有定義的話，預設還是會自動添加一個空的 constructor()
+
+    ex :
+
+    ```javascript
+    constructor() {
+
+    }
+    ```
+
+  * class 的特性除非透過 `this` 直接定義在實例上，否則都是定義在 prototype 上
+
+  * class 不存在變數拉升 (_hoisting_)
+
+    ex :
+
+    ```javascript
+    new Point();     // => ReferenceError: Point is not defined
+    
+    class Point {
+      
+    }
+    ```
+
+  * class 和 函式一樣，都可以使用運算式的方式定義
+
+    ex :
+
+    ```javascript
+    const MyClass = class Me {
+      
+      getClassName() {
+        
+        console.log(Me.name);
+      }
+    };
+    
+    let instance = new MyClass();
+    
+    instance.getClassName();     // => 'Me'
+    ```
+
+    > MyClass 是這個 class 的名稱，而不是 Me，Me 只在 class 內部可以使用，指的是目前這個 class
+
+  * class 運算式可以寫出立即執行的 class，如同 IIFE
+
+    ex :
+
+    ```javascript
+    let person = new class {
+      
+      constructor(name) {
+        
+        this.name = name;
+      }
+    
+      sayName() {
+        
+        console.log(this.name);
+      }
+    }('張三');
+    
+    person.sayName();     // => '張三'
+    ```
+
+  * class 的 name 特性會回傳 class 後面定義的名稱
+
+  * class 可以透過 `extends` 繼承 father class
+
+  * child class 必須在 constructor() 呼叫 super()，去取得 father class 的 `this`，因為它本身並沒有
+
+    ex :
+
+    ```javascript
+    class ColorPoint extends Point {
+      
+      constructor(x, y, color) {
+        
+        super(x, y);
+        this.color = color;
+      }
+    
+      toString() {
+        
+        return this.color + ' ' + super.toString();
+      }
+    }
+    ```
+
+  * 如果 child class 沒有定義 constructor()，預設的 constructor() 會自動呼叫 super()
+
+  * `super` 可以當作函式使用，也可以當作物件使用
+
+    - 當作函式：表示 father class 的 constructor()，只能用在 child class 的 constructor()
+
+    - 當作物件：指向 father class 的原型物件
+
+  * class 的方法前面加上 `*`，就是一個 Generator 函式
+
+  * class 靜態方法：在方法前面加上 `static`，表示該方法為靜態方法，且不會被實例繼承，需要直接透過 class 呼叫
+
+    ex :
+
+    ```javascript
+    class sayHi {
+      
+      static classMethod() {
+        
+        console.log('Hello World');
+      }
+    }
+    
+    sayHi.classMethod();     // => 'Hello World'
+    ```
+
+  * new.target：回傳目前的 class，child class 繼承時，會回傳 child class，而不是 father class
+
+    ex :
+
+    ```javascript
+    class Rectangle {
+      
+      constructor(length, width) {
+        console.log(new.target === Rectangle);     // => false，改成 Square 就會是 true
+    
+      }
+    }
+    
+    class Square extends Rectangle {
+      
+      constructor(length) {
+        
+        super(length, length);
+      }
+    }
+    
+    var obj = new Square(3);
+    ```
+
+<br />
+
 ## Reference Information
 
 JavaScript ECMAScript 6 Primer, (Author：阮一峰)
