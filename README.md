@@ -2,18 +2,18 @@
 
 [JavaScript Core](#javascript-core)
 
-  1. [let 和 const 關鍵字](#let-and-const-keyword)
-  2. [變數的解構賦值](#destructuring)
-  3. [字串的擴充](#new-string-features)
-  4. [數值的擴充](#new-number-features)
-  5. [陣列的擴充](#new-array-features)
-  6. [函式的擴充](#new-function-features)
-  7. [物件的擴充](#new-object-features)
+  1. [let、const](#let-and-const)
+  2. [Destructuring](#destructuring)
+  3. [New String Features](#new-string-features)
+  4. [New Number Features](#new-number-features)
+  5. [New Array Features](#new-array-features)
+  6. [New Function Features](#new-function-features)
+  7. [New Object Features](#new-object-features)
   8. [Symbols](#symbols)
   9. [Proxy、Reflect](#proxy-reflect)
-  10. [Set、Map 數據結構](#set-and-map-datastructure)
-  11. [Iterator、for...or loop](#iterator-for...or-loop)
-  12. [Generator 函式](#generators)
+  10. [Sets、Maps](#sets-and-maps)
+  11. [Iterators、for-or loop](#iterators-and-for-or-loop)
+  12. [Generators](#generators)
   13. [Promises](#promises)
   14. [Classes](#classes)
 
@@ -23,8 +23,8 @@
 
 ## JavaScript Core
 
-<a name="let-and-const-keyword"></a>
-let 和 const 關鍵字
+<a name="let-and-const"></a>
+let、const
 
   * `let` 可以用來宣告變數，用法類似 `var`，但是宣告的變數只在 `let` 所在的區塊內有效
   
@@ -190,7 +190,7 @@ let 和 const 關鍵字
 <br />
 
 <a name="destructuring"></a>
-變數的解構賦值
+Destructuring
 
   * ECMAScript 6 允許按照一定模式，從陣列或物件取值，並賦予至變數中
 
@@ -308,7 +308,7 @@ let 和 const 關鍵字
 <br />
 
 <a name="new-string-features"></a>
-字串的擴充
+New String Features
 
   * `includes`、`startsWith`、`endsWith` 函式
 
@@ -411,7 +411,7 @@ let 和 const 關鍵字
 <br />
 
 <a name="new-number-features"></a>
-數值的擴充
+New Number Features
 
   * `Number.isFinite()`、`Number.isNaN()`，非數值一律回傳 `false`
 
@@ -494,7 +494,7 @@ let 和 const 關鍵字
 <br />
 
 <a name="new-array-features"></a>
-陣列的擴充
+New Array Features
 
   * Array.from()：可以將物件轉換成陣列，主要為下列兩種
 
@@ -603,7 +603,7 @@ let 和 const 關鍵字
 <br />
 
 <a name="new-function-features"></a>
-函式的擴充
+New Function Features
 
   * 允許為函式的參數設定預設值
 
@@ -715,7 +715,7 @@ let 和 const 關鍵字
 <br />
 
 <a name="new-object-features"></a>
-物件的擴充
+New Object Features
 
   * 使用物件字面值定義特性時，允許直接寫入變數及函式
 
@@ -911,8 +911,8 @@ Proxy、Reflect
 <br />
 <br />
 
-<a name="set-and-map-datastructure"></a>
-Set、Map 數據結構
+<a name="sets-and-maps"></a>
+Sets、Maps
 
   * ECMAScript 6 提供了新的數據結構 Set，它類似陣列但是各個元素的值都是唯一的，Set 本身是個建構式
 
@@ -1021,8 +1021,8 @@ Set、Map 數據結構
 <br />
 <br />
 
-<a name="iterator-for...or-loop"></a>
-Iterator、for...of 迴圈
+<a name="iterators-and-for-or-loop"></a>
+Iterators、for-or loop
 
   * 原有的數據結構有陣列 (_Array_)、物件 (_Object_)，ECMAScript 6 新增了 Set 和 Map
 
@@ -1091,7 +1091,7 @@ Iterator、for...of 迴圈
 <br />
 
 <a name="generators"></a>
-Generator 函式
+Generators
 
   * Generator 函式是 ECMAScript 6 提供的一種非同步程式設計的解決方案
 
