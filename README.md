@@ -1,11 +1,29 @@
 ## Table of Contents
 
-> This is menu area
+[JavaScript Core](#javascript-core)
+
+  1. [let 和 const 關鍵字](#let-and-const-keyword)
+  2. [變數的解構賦值](#destructuring)
+  3. [字串的擴充](#new-string-features)
+  4. [數值的擴充](#new-number-features)
+  5. [陣列的擴充](#new-array-features)
+  6. [函式的擴充](#new-function-features)
+  7. [物件的擴充](#new-object-features)
+  8. [Symbols](#symbols)
+  9. [Proxy、Reflect](#proxy-reflect)
+  10. [Set、Map 數據結構](#set-and-map-datastructure)
+  11. [Iterator、for...or loop](#iterator-for...or-loop)
+  12. [Generator 函式](#generators)
+  13. [Promise](#promises)
+  14. [Class](#classes)
+
+[Reference Information](#reference-information)
 
 <br />
 
 ## JavaScript Core
 
+<a name="let-and-const-keyword"></a>
 let 和 const 關鍵字
 
   * `let` 可以用來宣告變數，用法類似 `var`，但是宣告的變數只在 `let` 所在的區塊內有效
@@ -166,8 +184,12 @@ let 和 const 關鍵字
     console.log(window.b);     // => undefined
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="destructuring"></a>
 變數的解構賦值
 
   * ECMAScript 6 允許按照一定模式，從陣列或物件取值，並賦予至變數中
@@ -280,8 +302,12 @@ let 和 const 關鍵字
     move();                 // => [0, 0]
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="new-string-features"></a>
 字串的擴充
 
   * `includes`、`startsWith`、`endsWith` 函式
@@ -379,8 +405,12 @@ let 和 const 關鍵字
     console.log(exp3);     // => 'foo Hello World bar'
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="new-number-features"></a>
 數值的擴充
 
   * `Number.isFinite()`、`Number.isNaN()`，非數值一律回傳 `false`
@@ -458,8 +488,12 @@ let 和 const 關鍵字
     console.log(Math.sign());          // => NaN
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="new-array-features"></a>
 陣列的擴充
 
   * Array.from()：可以將物件轉換成陣列，主要為下列兩種
@@ -563,8 +597,12 @@ let 和 const 關鍵字
     console.log(Array.from(['a',,'b']));     // => ['a', undefined, 'b']
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="new-function-features"></a>
 函式的擴充
 
   * 允許為函式的參數設定預設值
@@ -671,8 +709,12 @@ let 和 const 關鍵字
     };
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="new-object-features"></a>
 物件的擴充
 
   * 使用物件字面值定義特性時，允許直接寫入變數及函式
@@ -754,8 +796,12 @@ let 和 const 關鍵字
     console.log(Object.getPrototypeOf(target));     // => { a:1, b:2 }
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="symbols"></a>
 Symbol
 
   * 新增一種新的資料型別 Symbol，用來表示獨一無二的值，不得與其他資料型別進行運算
@@ -791,8 +837,12 @@ Symbol
     console.log(obj[varSymbol]);     // => 'Hello!'
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="proxy-reflect"></a>
 Proxy、Reflect
 
   * Proxy：攔截某些物件的操作行為，進而修改它的預設行為
@@ -856,8 +906,12 @@ Proxy、Reflect
 
   * Reflect：為了操作物件而提供的新API，將 Object 物件的一些明顯屬於語言內部的函式，放到 Reflect 物件中，某些方法同時存在 Object、Reflect 物件中，未來新方法將僅部署至 Reflect 物件中
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="set-and-map-datastructure"></a>
 Set、Map 數據結構
 
   * ECMAScript 6 提供了新的數據結構 Set，它類似陣列但是各個元素的值都是唯一的，Set 本身是個建構式
@@ -962,8 +1016,12 @@ Set、Map 數據結構
 
   * WeakMap 結構與 Map 類似，差別在於它的鍵只能是物件，鍵所指向的物件，不計入垃圾回收機制
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="iterator-for...or-loop"></a>
 Iterator、for...of 迴圈
 
   * 原有的數據結構有陣列 (_Array_)、物件 (_Object_)，ECMAScript 6 新增了 Set 和 Map
@@ -1027,8 +1085,12 @@ Iterator、for...of 迴圈
     }
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="generators"></a>
 Generator 函式
 
   * Generator 函式是 ECMAScript 6 提供的一種非同步程式設計的解決方案
@@ -1090,8 +1152,12 @@ console.log(hw.next());     // => { done: true, value: undefined }
     }
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="promises"></a>
 Promise
 
   * Promise 也是一個非同步程式設計的解決方案，他本身是一個建構式，用來產生 Promise 物件
@@ -1199,8 +1265,12 @@ Promise
 
   * Promise.resolve()：將一個物件轉換成 Promise 物件
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
+<a name="classes"></a>
 Class
 
   * ECMAScript 6 實作了 `class`，讓 JavaScript 的物件導向寫法和其他語言差異沒這麼大 (看起來)
@@ -1427,10 +1497,13 @@ Class
         super(length, length);
       }
     }
-    
+
     var obj = new Square(3);
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
+<br />
 <br />
 
 ## Reference Information
