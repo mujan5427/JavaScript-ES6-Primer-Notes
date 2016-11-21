@@ -1508,6 +1508,8 @@ Classes
 
 ## Reference Information
 
-JavaScript ECMAScript 6 Primer, (Author：阮一峰)
+JavaScript ECMAScript 6 Primer (Author：阮一峰)
+
+Exploring ES6：Upgrade to the next version of JavaScript (Author：Dr. Axel Rauschmayer)
 
 <br />
