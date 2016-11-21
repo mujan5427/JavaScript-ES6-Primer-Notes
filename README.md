@@ -14,8 +14,8 @@
   10. [Set、Map 數據結構](#set-and-map-datastructure)
   11. [Iterator、for...or loop](#iterator-for...or-loop)
   12. [Generator 函式](#generators)
-  13. [Promise](#promises)
-  14. [Class](#classes)
+  13. [Promises](#promises)
+  14. [Classes](#classes)
 
 [Reference Information](#reference-information)
 
@@ -802,7 +802,7 @@ let 和 const 關鍵字
 <br />
 
 <a name="symbols"></a>
-Symbol
+Symbols
 
   * 新增一種新的資料型別 Symbol，用來表示獨一無二的值，不得與其他資料型別進行運算
 
@@ -1158,7 +1158,7 @@ console.log(hw.next());     // => { done: true, value: undefined }
 <br />
 
 <a name="promises"></a>
-Promise
+Promises
 
   * Promise 也是一個非同步程式設計的解決方案，他本身是一個建構式，用來產生 Promise 物件
 
@@ -1271,7 +1271,7 @@ Promise
 <br />
 
 <a name="classes"></a>
-Class
+Classes
 
   * ECMAScript 6 實作了 `class`，讓 JavaScript 的物件導向寫法和其他語言差異沒這麼大 (看起來)
 
