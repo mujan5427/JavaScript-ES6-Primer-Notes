@@ -27,7 +27,7 @@
 let、const
 
   * `let` 可以用來宣告變數，用法類似 `var`，但是宣告的變數只在 `let` 所在的區塊內有效
-  
+
     ex :
 
     ```javascript
@@ -103,14 +103,14 @@ let、const
     ```javascript
     {
       let n = 5;
-  
+
       if (true) {
-    
+
           let n = 10;
-    
+
           console.log(n);     // => 10
       }
-  
+
       console.log(n);         // => 5
     }
     ```
@@ -163,7 +163,7 @@ let、const
 
     ```javascript
     if (true) {
-    
+
         const MAX = 5;
     }
 
@@ -203,7 +203,7 @@ Destructuring
     console.log(bar);     // => 2
     console.log(baz);     // => 3
     ```
-  
+
   * 解構不成功，變數的值會等於 `undefined`
 
     ex :
@@ -222,12 +222,12 @@ Destructuring
 
     ```javascript
     var [foo = true] = [];
-    
+
     console.log(foo);     // => true
-    
+
     var [r, x = 'b'] = ['a'];
     var [y, z = 'b'] = ['a', undefined];
-    
+
     console.log(x);       // => 'b'
     console.log(z);       // => 'b'
     ```
@@ -360,11 +360,11 @@ New String Features
 
     var str2 = `In JavaScript this is
      not legal.`;
-    
+
     var name = 'Bob', time = 'today';
-    
+
     var str3 = `Hello ${name}, how are you ${time}?`;
-    
+
     console.log(str1);     // => 'In JavaScript is a line-feed.'
     console.log(str2);     // => 'In JavaScript this is
                            //     not legal.'
@@ -389,17 +389,17 @@ New String Features
     var x = 1;
     var y = 2;
     var obj = {x: 1, y: 2};
-    
+
     function fn() {
-      
+
       return 'Hello World';
     }
-    
+
     var exp1 = `${x} + ${y * 2} = ${x + y * 2}`;
     var exp2 = `${obj.x + obj.y}`;
     var exp3 = `foo ${fn()} bar`;
-    
-    
+
+
     console.log(exp1);     // => '1 + 4 = 5'
     console.log(exp2);     // => '3'
     console.log(exp3);     // => 'foo Hello World bar'
@@ -511,9 +511,9 @@ New Array Features
         '2': 'c',
         length: 3
     };
-    
+
     let newArray = Array.from(arrayLikeObject);
-    
+
     console.log(newArray);     // => ['a', 'b', 'c']
     ```
 
@@ -529,24 +529,24 @@ New Array Features
     // find()
 
     var ans = [1, 4, -5, 10].find(
-    
+
       function (value) {
-        
+
         return value < 0;
       }
     );
-    
+
     console.log(ans);     // => -5
 
     // findIndex()
 
     var ans = [1, 5, 10, 15].find(
-      
+
       function(value, index, arr) {
-        
+
       return value > 9;
     });
-    
+
     console.log(ans);     // => 10
     ```
 
@@ -557,7 +557,7 @@ New Array Features
     ```javascript
     var arr1 = ['a', 'b', 'c'].fill(7);
     var arr2 = new Array(3).fill(7);
-    
+
     console.log(arr1);     // => [7, 7, 7]
     console.log(arr2);     // => [7, 7, 7]
     ```
@@ -574,17 +574,17 @@ New Array Features
 
     ```javascript
     for (let index of ['a', 'b'].keys()) {
-      
+
       console.log(index);            // => 0
     }                                //    1
-    
+
     for (let value of ['a', 'b'].values()) {
-      
+
       console.log(value);            // => 'a'     * 只有 Safari 10 有實作
     }                                //    'b'
-    
+
     for (let [index, value] of ['a', 'b'].entries()) {
-      
+
       console.log(index, value);     // => 0 'a'
     }                                //    1 'b'
     ```
@@ -611,10 +611,10 @@ New Function Features
 
     ```javascript
     function sayHi(x, y = 'World') {
-      
+
       console.log(x + ' ' + y);
     }
-    
+
     sayHi('Hello');              // => 'Hello World'
     sayHi('Hello', 'China');     // => 'Hello China'
     sayHi('Hello', '');          // => 'Hello '
@@ -626,12 +626,12 @@ New Function Features
 
     ```javascript
     var x = 1;
-    
+
     function f(x, y = x) {
-      
+
       console.log(y);
     }
-    
+
     f(2);     // => 2
     ```
 
@@ -641,10 +641,10 @@ New Function Features
 
     ```javascript
     function add(str, ...values) {
-    
+
       console.log(values);
     }
-    
+
     add('Hi', 2, 5, 3);     // => [2, 5, 3]
     ```
 
@@ -654,12 +654,12 @@ New Function Features
 
     ```javascript
     function add(x, y) {
-      
+
       return x + y;
     }
-    
+
     var numbers = [4, 38];
-    
+
     console.log(add(...numbers));     // => 42
     ```
 
@@ -670,7 +670,7 @@ New Function Features
     ```javascript
     function doSomething(a, b = a) {
       'use strict';     // => SyntaxError
-      
+
     }
     ```
 
@@ -681,7 +681,7 @@ New Function Features
     ```javascript
     function foo() {}
     var func1 = function () {};
-    
+
     console.log(foo.name);       // => 'foo'
     console.log(func1.name);     // => 'func1'
     ```
@@ -723,14 +723,14 @@ New Object Features
 
     ```javascript
     var birth = '1866/11/12';
-    
+
     var person = {
-    
+
       university: '德明',
       birth,
       hello() { return this.university; }
     };
-    
+
     console.log(person.birth);       // => '1866/11/12'
     console.log(person.hello());     // => '德明'
     ```
@@ -741,13 +741,13 @@ New Object Features
 
     ```javascript
     let propKey = 'foo';
-    
+
     let obj = {
-      
+
       [propKey]: true,
       ['a' + 'bc']: 123
     };
-    
+
     console.log(obj['foo']);     // => true
     console.log(obj['abc']);     // => 123
     ```
@@ -760,9 +760,9 @@ New Object Features
     var target  = { a: 1, b: 1 };
     var source1 = { b: 2, c: 2 };
     var source2 = { c: 3 };
-    
+
     Object.assign(target, source1, source2);
-    
+
     console.log(target);     // => { a:1, b:2, c:3 }
     ```
 
@@ -789,9 +789,9 @@ New Object Features
     ```javascript
     var prototypeObject = { a:1, b:2 };
     var target = {};
-    
+
     Object.setPrototypeOf(target, prototypeObject);
-    
+
     console.log(target.__proto__);                  // => { a:1, b:2 }
     console.log(Object.getPrototypeOf(target));     // => { a:1, b:2 }
     ```
@@ -812,11 +812,11 @@ Symbols
     var symbol1 = Symbol('justin');
     var symbol2 = Symbol('justin');
     var symbol3 = Symbol('abc');
-    
+
     console.log(symbol1.toString());      // => 'Symbol(justin)'
     console.log(symbol2.toString());      // => 'Symbol(justin)'
     console.log(symbol3.toString());      // => 'Symbol(abc)'
-    
+
     console.log(symbol1 === symbol2);     // => false
     ```
 
@@ -828,12 +828,12 @@ Symbols
 
     ```javascript
     var varSymbol = Symbol();
-    
+
     var obj = {
-      
+
       [varSymbol]: 'Hello!'
     };
-    
+
     console.log(obj[varSymbol]);     // => 'Hello!'
     ```
 
@@ -851,27 +851,27 @@ Proxy、Reflect
 
     ```javascript
     var person = {
-      
+
       name: '張三'
     };
-    
+
     var handler = {
-      
+
       get: function(target, property) {
-        
+
         if (property in target) {
-          
+
           return target[property];
-          
+
         } else {
-          
+
           throw new ReferenceError(`Property '${property}' does not exist.`);
         }
       }
     };
-    
+
     var proxy = new Proxy(person, handler);
-    
+
     console.log(proxy.name);     // => '張三'
     console.log(proxy.age);      // => ReferenceError: Property 'age' does not exist.
     ```
@@ -920,11 +920,11 @@ Sets、Maps
 
   ```javascript
   var set1 = new Set();
-  
+
   [2, 3, 5, 4, 5, 2, 2].map(x => set1.add(x));
-  
+
   for (let i of set1) {
-    
+
     console.log(i);     // => 2 3 5 4
   }
   ```
@@ -938,7 +938,7 @@ Sets、Maps
     - add(value)：新增值
 
     - delete(value)：刪除某個值，並回傳一個布林值，表示成功與否
- 
+
     - has(value)：回傳一個布林值，表示該值是否存在
 
     - clear()：清除所有值
@@ -957,19 +957,19 @@ Sets、Maps
 
     ```javascript
     var set1 = new Set();
-    
+
     set1.add(1).add(2).add(2);
-    
+
     console.log(set1.size);          // => 2
-    
+
     console.log(set1.has(1));        // => true
     console.log(set1.has(2));        // => true
     console.log(set1.has(3));        // => false
     console.log(set1.delete(2));     // => true
     console.log(set1.has(2));        // => false
-    
+
     set1.clear();
-    
+
     console.log(set1.size)           // => 0
     ```
 
@@ -977,19 +977,19 @@ Sets、Maps
 
     ```javascript
     var set = new Set(['red', 'green', 'blue']);
-    
+
     for (let item of set.keys()) {
-      
+
       console.log(item);     // => 'red' 'green' 'blue'
     }
-    
+
     for (let item of set.values()) {
-      
+
       console.log(item);     // => 'red' 'green' 'blue'
     }
-    
+
     for (let item of set.entries()) {
-      
+
       console.log(item);     // => ['red', 'red'] ['green', 'green'] ['blue', 'blue']
     }
     ```
@@ -1003,14 +1003,14 @@ Sets、Maps
     ```javascript
     var map1 = new Map();
     var object1 = { p: 'Hello World' };
-    
+
     map1.set(object1, 'content');
-    
+
     console.log(map1.get(object1));     // => 'content'
     console.log(map1.has(object1));     // => true
-    
+
     map1.delete(object1);
-    
+
     console.log(map1.has(object1));     // => false
     ```
 
@@ -1037,7 +1037,7 @@ Iterators、for-or loop
     ```javascript
     let arr = ['a', 'b', 'c'];
     let iter = arr[Symbol.iterator]();
-    
+
     console.log(iter.next());     // => { done: false , value: 'a' }
     console.log(iter.next());     // => { done: false , value: 'b' }
     console.log(iter.next());     // => { done: false , value: 'c' }
@@ -1051,14 +1051,14 @@ Iterators、for-or loop
     ```javascript
     const arr = ['red', 'green', 'blue'];
     let iterator  = arr[Symbol.iterator]();
-    
+
     for(let value of arr) {
-      
+
       console.log(value);     // => 'red' 'green' 'blue'
     }
-    
+
     for(let value of iterator) {
-      
+
       console.log(value);     // => 'red' 'green' 'blue'
     }
     ```
@@ -1073,14 +1073,14 @@ Iterators、for-or loop
 
     ```javascript
     var es6 = {
-      
+
       edition: 6,
       committee: 'TC39',
       standard: 'ECMA-262'
     };
-    
+
     for (propertyName in es6) {
-      
+
       console.log(propertyName);     // => 'edition' 'committee' 'standard'
     }
     ```
@@ -1105,14 +1105,14 @@ Generators
 
     ```javascript
     function* helloWorldGenerator() {
-      
+
       yield 'hello';
-      
+
       yield 'world';
-      
+
       return 'ending';
     }
-    
+
     var hw = helloWorldGenerator();
     ```
 
@@ -1123,10 +1123,10 @@ Generators
     > 呈如上一個範例，透過 next() 調整指針
 
     ```javascript
-console.log(hw.next());     // => { done: false, value: 'hello' }
-console.log(hw.next());     // => { done: false, value: 'world' }
-console.log(hw.next());     // => { done: true, value: 'ending' }
-console.log(hw.next());     // => { done: true, value: undefined }
+    console.log(hw.next());     // => { done: false, value: 'hello' }
+    console.log(hw.next());     // => { done: false, value: 'world' }
+    console.log(hw.next());     // => { done: true, value: 'ending' }
+    console.log(hw.next());     // => { done: true, value: undefined }
     ```
 
   * `yield` 和 `return` 的差別在於，指針改變後 `yield` 會調整自己的位置指向到下一個狀態，但是 `return` 不會，一個函式只能擁有一個 `return`
@@ -1137,7 +1137,7 @@ console.log(hw.next());     // => { done: true, value: undefined }
 
     ```javascript
     function *oneToFive() {
-      
+
       yield 1;
       yield 2;
       yield 3;
@@ -1145,9 +1145,9 @@ console.log(hw.next());     // => { done: true, value: undefined }
       yield 5;
       return 6;
     }
-    
+
     for (let value of oneToSix()) {
-      
+
       console.log(value);     // => 1 2 3 4 5
     }
     ```
@@ -1166,42 +1166,42 @@ Promises
 
     ```javascript
     function loadImageAsync(url) {
-      
+
       return new Promise(function(resolve, reject) {
-        
+
         var image = new Image();
-    
+
         image.onload = function() {
-          
+
           var str1 = 'Google Logo';
-          
+
           resolve(str1);
         };
-    
+
         image.onerror = function() {
-          
+
           reject(new Error('Could not load image at ' + url).toString());
         };
-    
+
         image.src = url;
       });
     }
 
-    
+
     var logoUrl = 'https://www.google.com.tw/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
-    
+
     loadImageAsync(logoUrl).then(
-      
+
       function(arg1) {
-        
-        console.log(`${arg1} 圖片： 載入成功！`); 
+
+        console.log(`${arg1} 圖片： 載入成功！`);
 
         // 我是 resolve() 的 Callback 區塊
-        
+
     }, function(arg1) {
-      
+
         console.log(arg1);     // => Error: Could not load image at...
-      
+
         // 我是 reject() 的 Callback 區塊
     });
     ```
@@ -1218,37 +1218,37 @@ Promises
 
     ```javascript
     function loadImageAsync(url) {
-      
+
       return new Promise(function(resolve, reject) {
-        
+
         var image = new Image();
-    
+
         image.onload = function() {
-          
+
           var str1 = 'Google Logo';
-          
+
           resolve(str1);
         };
-    
+
         image.onerror = function() {
-          
+
           reject(new Error('Could not load image at ' + url).toString());
         };
-    
+
         image.src = url;
       });
     }
-    
+
     var logoUrl = 'ttps://www.google.com.tw/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
-    
+
     loadImageAsync(logoUrl).then(
-      
+
       function(arg1) {
-        
-        console.log(`${arg1} 圖片： 載入成功！`); 
-        
+
+        console.log(`${arg1} 圖片： 載入成功！`);
+
     }).catch(function(error) {
-      
+
       console.log(error);     // => Error: Could not load image at...
     });
     ```
@@ -1283,28 +1283,28 @@ Classes
     // ECMAScript 5 寫法
 
     function Point(x, y) {
-      
+
       this.x = x;
       this.y = y;
     }
-    
+
     Point.prototype.toString = function () {
-      
+
       return '(' + this.x + ', ' + this.y + ')';
     };
-    
+
     var pointInstance = new Point(1, 2);
 
     // ECMAScript 6 寫法
 
     class Point {
-      
+
       constructor(x, y) {
-        
+
         this.x = x;
         this.y = y;
       }
-    
+
       toString() {
         return '(' + this.x + ', ' + this.y + ')';
       }
@@ -1321,30 +1321,30 @@ Classes
 
     ```javascript
     class Point {
-      
+
       constructor() {
-    
+
       }
-    
+
       toString() {
-        
+
       }
-    
+
       toValue() {
-        
+
       }
     }
-    
+
     Point.prototype = {
-      
+
       toString() {
-        
+
       },
       toValue() {
-        
+
       }
     };
-    
+
     console.log(Point.prototype.toString() === new Point().toString());     // => true
     ```
 
@@ -1380,9 +1380,9 @@ Classes
 
     ```javascript
     new Point();     // => ReferenceError: Point is not defined
-    
+
     class Point {
-      
+
     }
     ```
 
@@ -1392,15 +1392,15 @@ Classes
 
     ```javascript
     const MyClass = class Me {
-      
+
       getClassName() {
-        
+
         console.log(Me.name);
       }
     };
-    
+
     let instance = new MyClass();
-    
+
     instance.getClassName();     // => 'Me'
     ```
 
@@ -1412,18 +1412,18 @@ Classes
 
     ```javascript
     let person = new class {
-      
+
       constructor(name) {
-        
+
         this.name = name;
       }
-    
+
       sayName() {
-        
+
         console.log(this.name);
       }
     }('張三');
-    
+
     person.sayName();     // => '張三'
     ```
 
@@ -1437,15 +1437,15 @@ Classes
 
     ```javascript
     class ColorPoint extends Point {
-      
+
       constructor(x, y, color) {
-        
+
         super(x, y);
         this.color = color;
       }
-    
+
       toString() {
-        
+
         return this.color + ' ' + super.toString();
       }
     }
@@ -1467,13 +1467,13 @@ Classes
 
     ```javascript
     class sayHi {
-      
+
       static classMethod() {
-        
+
         console.log('Hello World');
       }
     }
-    
+
     sayHi.classMethod();     // => 'Hello World'
     ```
 
@@ -1483,17 +1483,17 @@ Classes
 
     ```javascript
     class Rectangle {
-      
+
       constructor(length, width) {
         console.log(new.target === Rectangle);     // => false，改成 Square 就會是 true
-    
+
       }
     }
-    
+
     class Square extends Rectangle {
-      
+
       constructor(length) {
-        
+
         super(length, length);
       }
     }
