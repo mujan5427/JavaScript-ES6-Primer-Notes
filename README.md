@@ -709,6 +709,23 @@ New Function Features
     };
     ```
 
+  * 箭頭函式允許和 Destructuring 結合使用
+
+    ex :
+
+    ```javascript
+    var user = {
+      firstName: 'Justin',
+      lastName: 'Ho'
+    };
+
+    var getName = ({firstName, lastName}) => {
+      console.log(`${ firstName } ${ lastName }`);
+    };
+
+    getName(user);   // => 'Justin Ho'
+    ```
+
 **[⬆ back to top](#table-of-contents)**
 
 <br />
