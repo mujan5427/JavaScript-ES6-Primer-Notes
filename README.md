@@ -679,6 +679,10 @@ New Function Features
 
     - 函式內的 `this` 不可指定，是固定的
 
+      > 函式內的 `this`，就是定義時所在的物件，而不是調用時所在的物件
+
+      > 箭頭函式沒有自己的 `this`，導致內部的 `this` 就是外層程式碼區塊的 `this`
+
     - 不可當作建構式，用 `new` 則會報錯
 
     - 不可使用 `arguments`、`super`、`new.target`
@@ -696,6 +700,35 @@ New Function Features
 
       return value;
     };
+    ```
+
+  * 不適用箭頭函式的場合
+
+    - 定義方法，且該方法內部包含 `this`
+
+    ex :
+
+    ```JavaScript
+    var cat = {
+      lives: 9,
+      jumps: () => {
+        console.log(Object.prototype.toString.call(this));   // [object Window]
+      }
+    }
+
+    cat.jumps();
+    ```
+
+    - Event Handler
+
+    ex :
+
+    ```JavaScript
+    var btn = document.querySelector('button');
+
+    btn.addEventListener('click', () => {
+      console.log(Object.prototype.toString.call(this));   // [object Window]
+    });
     ```
 
   * 箭頭函式允許和 Destructuring 結合使用
