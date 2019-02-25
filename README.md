@@ -809,7 +809,7 @@ New Object Features
     console.log(target);     // => { a:1, b:2, c:3 }
     ```
 
-  * 物件擴展運算子(**Object Spread Operator**) : 透過 `...` 取出物件的所有可列舉特性
+  * **物件擴展運算子 (_object spread operator_)** : 透過 `...` 取出物件的所有可列舉特性
 
     ex :
 
