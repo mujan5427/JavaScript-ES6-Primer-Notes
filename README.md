@@ -809,6 +809,15 @@ New Object Features
     console.log(target);     // => { a:1, b:2, c:3 }
     ```
 
+  * 物件擴展運算子(**Object Spread Operator**) : 透過 `...` 取出物件的所有可列舉特性
+
+    ex :
+
+    ```JavaScript
+    var obj1 = { user1: 'John', user2: 'Justin' };
+    var obj2 = { ...obj1 };   // {user1: "John", user2: "Justin"}
+    ```
+
   * ES6 一共有 5 種方式可以遍歷物件的特性
 
     - for...in：遍歷物件自有的、繼承的可列舉特性 (不含 Symbol 特性)
