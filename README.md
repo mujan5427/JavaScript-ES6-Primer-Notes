@@ -719,6 +719,8 @@ New Function Features
     cat.jumps();
     ```
 
+    > 如果使用一般函式，`this` 將指向 cat 物件
+
     - Event Handler
 
     ex :
@@ -730,6 +732,8 @@ New Function Features
       console.log(Object.prototype.toString.call(this));   // [object Window]
     });
     ```
+
+    > 如果使用一般函式，`this` 將指向該元素
 
   * 箭頭函式允許和 Destructuring 結合使用
 
