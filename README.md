@@ -597,6 +597,21 @@ New Array Features
     console.log(Array.from(['a',,'b']));     // => ['a', undefined, 'b']
     ```
 
+  * **陣列擴展運算子 (_array spread operator_)**：透過 `...` 將一組陣列轉成用逗號分隔的參數序列
+
+    ex :
+
+    ```javascript
+    function add(x, y) {
+
+      return x + y;
+    }
+
+    var numbers = [4, 38];
+
+    console.log(add(...numbers));     // => 42
+    ```
+
 **[⬆ back to top](#table-of-contents)**
 
 <br />
@@ -646,21 +661,6 @@ New Function Features
     }
 
     add('Hi', 2, 5, 3);     // => [2, 5, 3]
-    ```
-
-  * **擴展運算子 (_spread operator_)**：透過 `...` 將一組陣列轉成用逗號分隔的參數序列
-
-    ex :
-
-    ```javascript
-    function add(x, y) {
-
-      return x + y;
-    }
-
-    var numbers = [4, 38];
-
-    console.log(add(...numbers));     // => 42
     ```
 
   * 函式的 `name` 特性，會回傳該函式的名稱
