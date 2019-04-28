@@ -16,6 +16,7 @@
   12. [Generators](#generators)
   13. [Promises](#promises)
   14. [Classes](#classes)
+  15. [Module](#module)
 
 [Reference Information](#reference-information)
 
@@ -1557,6 +1558,143 @@ Classes
 
 <br />
 <br />
+
+<a name="module"></a>
+Module
+
+  * ECMAScript 6 的模組自動採用`嚴格模式`，不管你有沒有在模組開頭加上 `"use strict";`
+
+  * 模組功能主要由兩個命令構成: `export` 和 `import`
+
+    - `export` 命令用於規定模組的對外接口，可輸出變數、函數 和 類別
+
+    - `import` 命令用於輸入其他模組提供的功能
+
+  * 一個模組就是一個獨立的文件，該文件內部的所有變數，外部無法獲取，如果你希望外部能夠讀取模組內部的某個變數，就必須使用 `export` 關鍵字輸出該變數
+
+  * `export` 基本用法
+
+    ex :
+
+    ```javascript
+    // 輸出變數
+
+    // 寫法 1
+
+    export var firstName = 'Michael';
+    export var lastName = 'Jackson';
+    export var year = 1958;
+
+    // 寫法 2
+
+    var firstName = 'Michael';
+    var lastName = 'Jackson';
+    var year = 1958;
+
+    export { firstName, lastName, year };
+    ```
+
+    ```javascript
+    // 輸出函數
+
+    // 寫法 1
+    export function multiply(x, y) {
+      return x * y;
+    };
+
+    // 寫法 2
+    function v1() { ... }
+    function v2() { ... }
+
+    export {
+      v1 as streamV1,
+      v2 as streamV2,
+      v2 as streamLatestVersion   // v2 可以用不同的名字輸出兩次
+    };
+    ```
+    > 可以使用 `as` 關鍵字，重新命名輸出函數的對外接口
+
+  * `export` 輸出的接口，與其對應的值是動態綁定關係，即通過該接口，可以取到模組內部即時的值
+
+    ex :
+
+    ```javascript
+    export var foo = 'bar';
+
+    setTimeout(() => foo = 'baz', 500);
+    ```
+
+  * `export` 可以出現在模組的任何位置，只要處於模組頂層即可
+
+  * `export default`：使 `import` 時，不需要知道變數或函數名稱，即可載入的一種輸出方式
+
+    ex :
+
+    ```javascript
+    // export-default.js
+
+    export default function () {        // 寫法 1 (匿名函數)
+      console.log('foo');
+    }
+
+    export default function foo() {     // 寫法 2
+      console.log('foo');
+    }
+
+    function foo() {                    // 寫法 3
+      console.log('foo');
+    }
+
+    export default foo;
+    ```
+
+    ```javascript
+    // import-default.js
+
+    import customName from './export-default';
+
+    customName();                       // 'foo'
+    ```
+
+  * `import` 基本用法
+
+    ex :
+
+    ```javascript
+    import { firstName, lastName, year } from './profile.js';
+    ```
+
+    ```javascript
+    import { lastName as surname } from './profile.js';
+    ```
+    > 使用 `as` 關鍵字，將輸入的變數重新命名
+
+  * `import` 具有拉升 (Hoisting) 效果，會拉升到整個模組的開頭，首先執行
+
+    ex :
+
+    ```javascript
+    foo();
+
+    import { foo } from 'my_module';
+    ```
+
+  * 整體載入: 用星號 (*) 指定一個物件，所有輸出值都載入到這個物件上面
+
+    ex :
+
+    ```javascript
+    import * as circle from './circle';
+
+    console.log('圓面積: ' + circle.area(4));
+    console.log('圓周長: ' + circle.circumference(14));
+    ```
+
+**[⬆ back to top](#table-of-contents)**
+
+<br />
+<br />
+
 
 ## Reference Information
 
