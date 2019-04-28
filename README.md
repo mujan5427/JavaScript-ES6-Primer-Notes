@@ -1482,9 +1482,9 @@ Classes
 
   * class 的 name 特性會回傳 class 後面定義的名稱
 
-  * class 可以透過 `extends` 繼承 father class
+  * class 可以透過 `extends` 繼承 parent class
 
-  * child class 必須在 constructor() 呼叫 super()，去取得 father class 的 `this`，因為它本身並沒有
+  * subclass 必須在 constructor() 呼叫 super()，去取得 parent class 的 `this`，因為它本身並沒有
 
     ex :
 
@@ -1504,13 +1504,13 @@ Classes
     }
     ```
 
-  * 如果 child class 沒有定義 constructor()，預設的 constructor() 會自動呼叫 super()
+  * 如果 subclass 沒有定義 constructor()，預設的 constructor() 會自動呼叫 super()
 
   * `super` 可以當作函式使用，也可以當作物件使用
 
-    - 當作函式：表示 father class 的 constructor()，只能用在 child class 的 constructor()
+    - 當作函式：表示 parent class 的 constructor()，只能用在 subclass 的 constructor()
 
-    - 當作物件：指向 father class 的原型物件
+    - 當作物件：指向 parent class 的原型物件
 
   * class 的方法前面加上 `*`，就是一個 Generator 函式
 
@@ -1530,7 +1530,7 @@ Classes
     sayHi.classMethod();     // => 'Hello World'
     ```
 
-  * new.target：回傳目前的 class，child class 繼承時，會回傳 child class，而不是 father class
+  * new.target：回傳目前的 class，subclass 繼承時，會回傳 subclass，而不是 parent class
 
     ex :
 
