@@ -1614,6 +1614,8 @@ Module
     ```
     > 可以使用 `as` 關鍵字，重新命名輸出函數的對外接口
 
+<br>
+
   * `export` 輸出的接口，與其對應的值是動態綁定關係，即通過該接口，可以取到模組內部即時的值
 
     ex :
@@ -1668,6 +1670,8 @@ Module
     import { lastName as surname } from './profile.js';
     ```
     > 使用 `as` 關鍵字，將輸入的變數重新命名
+
+<br>
 
   * `import` 具有拉升 (Hoisting) 效果，會拉升到整個模組的開頭，首先執行
 
